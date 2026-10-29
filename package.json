@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "description": "school test",
   "main": "sever.js",
-  "type": "module" ,
   "scripts": {
-    "dev": "nodemon",
+    "dev": "nodemon server.js",
     "start": "node server.js"
   },
   "repository": {
@@ -13,6 +12,7 @@
     "url": "git+https://github.com/Zaanian/cse340-course-repo.git"
   },
   "author": "stephen stauffer",
+  "type": "module",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Zaanian/cse340-course-repo/issues"
