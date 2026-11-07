@@ -4,9 +4,9 @@ const getAllProjects = async () => {
     const query = ` 
         SELECT o.name, c.title
     FROM 
-        organization o 
+        public.organization o 
     INNER JOIN
-        service_projects c ON o.organization_id = c.organization_id;
+        public.service_projects c ON o.organization_id = c.organization_id;
     `;
 
     const result = await db.query(query);
