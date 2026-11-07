@@ -8,10 +8,10 @@
 
             <% projects.forEach(project=> {%>
                 <li>
-                    <%= new Date(project.date).toLocaleDateString() %>
+                    <%= new Date(project.date).toLocaleDateString() %>:
                         <%= project.title %>
                             <strong>
-                                <%= project.name %>
+                                (<%= project.name %>)
                             </strong>
                 </li>
                 <% }); %>
