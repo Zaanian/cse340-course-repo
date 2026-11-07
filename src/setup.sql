@@ -46,9 +46,6 @@ VALUES
   (1, 'STEM & Trades Mobile Workshop ("Future Toolkits")', 'A hybrid project combining physical creation and interactive skills training. BrightFuture Builders creates custom mobile workbench carts and hosts hands-on carpentry/STEM workshops for teenagers.', 'Discovery Park Community Center', '2027-08-28'),
   (1, 'Senior Safe-At-Home Accessibility Upgrades', 'Volunteer crews mobilize to perform essential safety and accessibility modifications for low-income elderly or disabled homeowners.', 'A Place for Me', '2027-10-17');
 
---select projects along with their organizations
-SELECT o.name, c.title
-FROM 
-    organization o 
-INNER JOIN
-    service_projects c ON o.organization_id = c.organization_id;
+--setup categories table
+
+--insert categories data
