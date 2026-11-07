@@ -8,8 +8,11 @@
 
             <% projects.forEach(project=> {%>
                 <li>
-                    <%= project.name %> 
-                    <%= project.title %> 
+                    <%= new Date(project.date).toLocaleDateString() %>
+                        <%= project.title %>
+                            <strong>
+                                <%= project.name %>
+                            </strong>
                 </li>
                 <% }); %>
 

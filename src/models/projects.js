@@ -2,7 +2,7 @@ import db from './db.js'
 
 const getAllProjects = async () => {
     const query = ` 
-        SELECT o.name, c.title
+        SELECT o.name, c.title, c.date
     FROM 
         public.organization o 
     INNER JOIN
