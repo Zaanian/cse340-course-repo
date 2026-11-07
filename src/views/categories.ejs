@@ -3,14 +3,13 @@
         <h1>
             <%= title %>
         </h1>
-        <p>Here are some categories.</p>
         <ul>
-            <li>
+            <% categories.forEach(category=> {%>
+                <li>
 
-                <% categories.forEach(category=> {%>
-                    (<%= project.title %>)
-            </li>
-            <% }); %>
+                    <%= category.category_name %>
+                </li>
+                <% }); %>
         </ul>
     </main>
     <%- include('partials/footer') %>
