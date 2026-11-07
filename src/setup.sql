@@ -47,5 +47,40 @@ VALUES
   (1, 'Senior Safe-At-Home Accessibility Upgrades', 'Volunteer crews mobilize to perform essential safety and accessibility modifications for low-income elderly or disabled homeowners.', 'A Place for Me', '2027-10-17');
 
 --setup categories table
+CREATE TABLE project_categories (
+    project_id INT REFERENCES service_projects(project_id) ON DELETE CASCADE,
+    category_id INT REFERENCES categories(category_id) ON DELETE CASCADE,
+    PRIMARY KEY (project_id, category_id) 
+);
 
 --insert categories data
+INSERT INTO categories (categories_id, name) VALUES
+(1, 'Food Security & Hunger Relief'),
+(2, 'Environmental Stewardship & Sustainability'),
+(3, 'Housing, Repair & Accessibility Infrastructure'),
+(4, 'Youth, Education & Digital Inclusion');
+
+-- create project_categories junction table
+CREATE TABLE project_categories (
+    project_id INT REFERENCES service_projects(project_id) ON DELETE CASCADE,
+    category_id INT REFERENCES categories(category_id) ON DELETE CASCADE,
+    PRIMARY KEY (project_id, category_id) 
+);
+
+--insert data for projects_categories
+INSERT INTO project_categories (project_id, category_id) VALUES
+(1,1),
+(7,1),
+(6,1),
+(12,1),
+(2,2),
+(9,2),
+(10,2),
+(8,2),
+(5,3),
+(13,3),
+(15,3),
+(11,3),
+(3,4),
+(4,4),
+(14,4);
