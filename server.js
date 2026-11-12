@@ -1,11 +1,9 @@
 import express from 'express';
 
+import { router } from './src/routes.js';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import { testConnection } from './src/models/db.js';
-import { getAllOrganizations } from './src/models/organizations.js';
-import { getAllProjects } from './src/models/projects.js';
-import { getAllCategories } from './src/models/categories.js';
 
 // Define the application environment
 const NODE_ENV = process.env.NODE_ENV?.toLowerCase() || 'production';
@@ -47,40 +45,11 @@ app.use((req, res, next) => {
 });
 
 /**
- * Routes
+ * Routes imported
  */
-app.get('/', async (req, res) => {
-    const title = 'Home';
-    res.render('home', { title });
-});
 
-app.get('/organizations', async (req, res) => {
-    const organizations = await getAllOrganizations();
-    const title = 'Our Partner Organizations';
+app.use(router);
 
-    res.render('organizations', { title, organizations });
-});
-
-app.get('/projects', async (req, res) => {
-    const projects = await getAllProjects();
-    const title = 'Service Projects';
-
-    res.render('projects', { title, projects });
-});
-
-app.get('/categories', async (req, res) => {
-    const categories = await getAllCategories();
-    const title = 'Categories';
-
-    res.render('categories', { title, categories });
-})
-
-// Test route for 500 errors
-app.get('/test-error', (req, res, next) => {
-    const err = new Error('This is a test error');
-    err.status = 500;
-    next(err);
-});
 
 // Catch-all route for 404 errors
 app.use((req, res, next) => {
