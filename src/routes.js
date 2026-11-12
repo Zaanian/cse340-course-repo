@@ -4,7 +4,7 @@ import { showHomePage } from './controller/index.js';
 import { showOrganizationsPage } from './controller/organizations.js';
 import { showProjectsPage } from './controller/projects.js';
 import { showCategoriesPage } from './controller/categories.js';
-import { testErrorPage } from './controller/errors.js';
+import { testErrorPage } from './controller/error.js';
 
 const router = express.Router();
 
