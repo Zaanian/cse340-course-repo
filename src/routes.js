@@ -5,6 +5,7 @@ import { showOrganizationsPage } from './controller/organizations.js';
 import { showProjectsPage } from './controller/projects.js';
 import { showCategoriesPage } from './controller/categories.js';
 import { testErrorPage } from './controller/error.js';
+import { showOrganizationDetailsPage } from './controller/organizations.js';
 
 const router = express.Router();
 
@@ -15,5 +16,7 @@ router.get('/categories', showCategoriesPage);
 
 // error-handling routes
 router.get('/test-error', testErrorPage);
+
+router.get('/organization/:id', showOrganizationDetailsPage);
 
 export default router;
