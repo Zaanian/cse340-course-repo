@@ -9,10 +9,12 @@
             <% projects.forEach(project=> {%>
                 <li>
                     <%= new Date(project.date).toLocaleDateString() %>:
-                        <%= project.title %>
-                            <strong>
-                                (<%= project.name %>)
-                            </strong>
+                        <a href="/project/<%= project.project_id %>">
+                            <%= project.title %>
+                        </a>
+
+
+
                 </li>
                 <% }); %>
 
