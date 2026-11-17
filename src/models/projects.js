@@ -37,7 +37,7 @@ const getProjectsByOrganizationId = async (organizationId) => {
 /**
  * Queries the database for upcoming service projects.
  */
-async function getUpcomingServiceProjects(numberOfProjects) {
+const getUpcomingServiceProjects = async (numberOfProjects) => {
     const query = `
         SELECT 
             p.project_id,
@@ -79,7 +79,7 @@ async function getUpcomingServiceProjects(numberOfProjects) {
     }
 }
 
-async function getProjectDetails(id) {
+const getProjectDetails = async (id) => {
     const query = `
         SELECT 
             p.project_id,

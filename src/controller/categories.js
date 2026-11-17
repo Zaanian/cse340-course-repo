@@ -8,7 +8,7 @@ const showCategoriesPage = async (req, res) => {
     res.render('categories', { title, categories });
 };
 
-async function showCategoryDetailsPage(req, res) {
+const showCategoryDetailsPage = async (req, res) => {
     const categoryId = req.params.id;
     const category = await getCategoryById(categoryId);
     const projects = await getProjectsByCategoryId(categoryId);
