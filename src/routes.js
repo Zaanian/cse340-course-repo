@@ -55,9 +55,9 @@ router.get('/edit-project/:id', showEditProjectForm)
 router.post('/edit-project/:id', processEditProjectForm)
 
 // Route to display the edit project form
-router.get('/edit-project/:id', showEditcategoryForm);
+router.get('/edit-category/:id', showEditcategoryForm);
 // Route to handle the edit project form submission
-router.post('/edit-project/:id', processEditProjectForm);
+router.post('/edit-category/:id', processEditcategoryForm);
 
 // error-handling routes
 router.get('/test-error', testErrorPage);

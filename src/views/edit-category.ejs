@@ -3,12 +3,13 @@
         <h1>
             <%= title %>
         </h1>
+        <h2>Name: <%= category.category_name %>
+        </h2>
 
-        <form action="/edit-category/<%= categoryDetails.category_id %>" method="POST">
+        <form action="/edit-category/<%= category.category_id %>" method="POST">
             <div class="form-group">
                 <label for="title">Category Title</label>
-                <input type="text" id="title" name="title" value="<%= categoryDetails.title %>" maxlength="150"
-                    required />
+                <input type="text" id="title" name="title" value="<%= category.title %>" maxlength="150" required />
             </div>
 
             <button type="submit">Update Category</button>

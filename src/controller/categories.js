@@ -4,6 +4,7 @@ import {
     updateCategoryAssignments, createCategory, updateCategory
 } from '../models/categories.js';
 import { getProjectDetails } from '../models/projects.js';
+import { body, validationResult } from 'express-validator';
 
 
 const showCategoriesPage = async (req, res) => {
@@ -47,7 +48,7 @@ const processAssignCategoriesForm = async (req, res) => {
 };
 
 const showNewCategoryform = async (req, res) => {
-    
+
 }
 
 const processNewCategoryform = async (req, res) => {
@@ -82,8 +83,8 @@ const processEditcategoryForm = async (req, res) => {
     await updateCategory(categoryId, title);
 
     // Set a success flash message
-    req.flash('success', 'Organization updated successfully!');
-    res.redirect(`/organization/${organizationId}`);
+    req.flash('success', 'Category updated successfully!');
+    res.redirect(`/category/${categoryId}`);
 }
 export {
     showCategoriesPage, showCategoryDetailsPage,
