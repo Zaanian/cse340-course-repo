@@ -89,7 +89,7 @@ const createCategory = async (name, categoryId) => {
 const updateCategory = async (categoryId, title) => {
     const query = `
     UPDATE categories
-    SET title = $1
+    SET category_name = $1
     WHERE category_id = $2
     RETURNING category_id;
   `;
