@@ -1,4 +1,4 @@
-import { getUpcomingServiceProjects, getProjectDetails, createProject } from '../models/projects.js';
+import { getUpcomingServiceProjects, getProjectDetails, createProject, updateProject } from '../models/projects.js';
 import { getCategoriesByProjectId } from '../models/categories.js';
 import { getAllOrganizations } from '../models/organizations.js'
 import { body, validationResult } from 'express-validator';
@@ -21,6 +21,7 @@ const showProjectDetailsPage = async (req, res) => {
 
     res.render('project', { title, projectDetails, categories });
 }
+
 const showNewProjectForm = async (req, res) => {
     const organizations = await getAllOrganizations();
     const title = 'Add New Service Project';
@@ -76,4 +77,33 @@ const projectValidation = [
         .isInt().withMessage('Organization must be a valid integer')
 ];
 
-export { showProjectsPage, showProjectDetailsPage, showNewProjectForm, processNewProjectForm, projectValidation }
+const showEditProjectForm = async (req, res) => {
+    const projectId = req.params.id;
+    const organizations = await getAllOrganizations()
+    const projectDetails = await getProjectDetails(projectId);
+
+    const title = 'Edit project';
+    res.render('edit-project', { title, projectDetails, organizations });
+};
+
+const processEditProjectForm = async (req, res) => {
+    const projectId = req.params.id;
+    const { organizationId, title, description, location, date } = req.body;
+
+    // Check for validation errors
+    const results = validationResult(req);
+    if (!results.isEmpty()) {
+        // Validation failed - loop through errors
+        results.array().forEach((error) => {
+            req.flash('error', error.msg);
+        });
+
+        // Redirect back to the edit project form
+        return res.redirect('/edit-project/' + req.params.id);
+    }
+    await updateProject(projectId, organizationId, title, description, location, date);
+    // Set a success flash message
+    req.flash('success', 'project updated successfully!');
+    res.redirect(`/project/${projectId}`);
+}
+export { showProjectsPage, showProjectDetailsPage, showNewProjectForm, processNewProjectForm, projectValidation, showEditProjectForm, processEditProjectForm }

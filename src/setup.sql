@@ -51,14 +51,13 @@ VALUES
   (1, 'Senior Safe-At-Home Accessibility Upgrades', 'Volunteer crews mobilize to perform essential safety and accessibility modifications for low-income elderly or disabled homeowners.', 'A Place for Me', '2027-10-17');
 
 --setup categories table
-CREATE TABLE project_categories (
-    project_id INT REFERENCES service_projects(project_id) ON DELETE CASCADE,
-    category_id INT REFERENCES categories(category_id) ON DELETE CASCADE,
-    PRIMARY KEY (project_id, category_id) 
+CREATE TABLE categories (
+    category_id SERIAL PRIMARY KEY,
+    title VARCHAR(150) NOT NULL UNIQUE
 );
 
 --insert categories data
-INSERT INTO categories (categories_id, name) VALUES
+INSERT INTO categories (categories_id, title) VALUES
 (1, 'Food Security & Hunger Relief'),
 (2, 'Environmental Stewardship & Sustainability'),
 (3, 'Housing, Repair & Accessibility Infrastructure'),
