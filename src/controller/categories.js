@@ -6,6 +6,14 @@ import {
 import { getProjectDetails } from '../models/projects.js';
 import { body, validationResult } from 'express-validator';
 
+const categoryValidation = [
+    body('name')
+        .trim()
+        .notEmpty()
+        .withMessage('Category name is required')
+        .isLength({ min: 3, max: 150 })
+        .withMessage('Category name must be between 3 and 150 characters')
+]
 
 const showCategoriesPage = async (req, res) => {
     const categories = await getAllCategories();
@@ -48,11 +56,29 @@ const processAssignCategoriesForm = async (req, res) => {
 };
 
 const showNewCategoryform = async (req, res) => {
+    const title = 'Add New Category';
 
+    res.render('new-category', { title });
 }
 
 const processNewCategoryform = async (req, res) => {
+    // Check for validation errors
+    const results = validationResult(req);
+    if (!results.isEmpty()) {
+        // Validation failed - loop through errors
+        results.array().forEach((error) => {
+            req.flash('error', error.msg);
+        });
 
+        // Redirect back to the new organization form
+        return res.redirect('/new-category');
+    }
+
+    const { name } = req.body;
+
+    const categoryId = await createCategory(name);
+    req.flash('success', 'Category added successfully!');
+    res.redirect(`/category/${categoryId}`);
 }
 
 const showEditcategoryForm = async (req, res) => {
@@ -90,5 +116,6 @@ export {
     showCategoriesPage, showCategoryDetailsPage,
     showAssignCategoriesForm, processAssignCategoriesForm,
     showEditcategoryForm, processNewCategoryform,
-    showNewCategoryform, processEditcategoryForm
+    showNewCategoryform, processEditcategoryForm,
+    categoryValidation
 }
