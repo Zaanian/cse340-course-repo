@@ -55,14 +55,14 @@ router.get('/edit-project/:id', showEditProjectForm)
 // Route to handle edit project form submission
 router.post('/edit-project/:id', processEditProjectForm)
 
-// Route to display the edit project form
+// Route to display the edit category form
 router.get('/edit-category/:id', showEditcategoryForm);
-// Route to handle the edit project form submission
+// Route to handle the edit category form submission
 router.post('/edit-category/:id', processEditcategoryForm);
 
 //Route to new category page
 router.get('/new-category', showNewCategoryform)
-//Route to handle neew category page
+//Route to handle new category page
 router.post('/new-category', categoryValidation, processNewCategoryform)
 
 // error-handling routes

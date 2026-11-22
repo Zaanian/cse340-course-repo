@@ -7,7 +7,7 @@ import { getProjectDetails } from '../models/projects.js';
 import { body, validationResult } from 'express-validator';
 
 const categoryValidation = [
-    body('name')
+    body('title')
         .trim()
         .notEmpty()
         .withMessage('Category name is required')
@@ -102,8 +102,8 @@ const processEditcategoryForm = async (req, res) => {
             req.flash('error', error.msg);
         });
 
-        // Redirect back to the edit project form
-        return res.redirect('/edit-organization/' + req.params.id);
+        // Redirect back to the edit category form
+        return res.redirect('/edit-category/' + req.params.id);
     }
 
     await updateCategory(categoryId, title);
