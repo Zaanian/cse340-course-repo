@@ -70,7 +70,7 @@ const processNewCategoryform = async (req, res) => {
             req.flash('error', error.msg);
         });
 
-        // Redirect back to the new organization form
+        // Redirect back to the new category form
         return res.redirect('/new-category');
     }
 
