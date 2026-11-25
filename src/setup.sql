@@ -17,7 +17,7 @@ VALUES
 -- setup service_projects table
 CREATE TABLE service_projects (
 	project_id SERIAL PRIMARY KEY,
-	organization_id INTEGER,
+	organization_id INTEGER NOT NULL,
 	title VARCHAR(150) NOT NULL,
 	description TEXT NOT NULL,
 	location VARCHAR(150) NOT NULL,
@@ -57,7 +57,7 @@ CREATE TABLE categories (
 );
 
 --insert categories data
-INSERT INTO categories (categories_id, title) VALUES
+INSERT INTO categories (category_id, title) VALUES
 (1, 'Food Security & Hunger Relief'),
 (2, 'Environmental Stewardship & Sustainability'),
 (3, 'Housing, Repair & Accessibility Infrastructure'),
