@@ -2,7 +2,7 @@ import db from './db.js'
 
 const getAllCategories = async () => {
     const query = ` 
-        SELECT category_name , category_id
+        SELECT title , category_id
         FROM public.categories;
     `;
 
@@ -13,7 +13,7 @@ const getAllCategories = async () => {
 //
 const getCategoryById = async (categoryId) => {
     const query = `
-        SELECT category_id, category_name 
+        SELECT category_id, title 
         FROM categories 
         WHERE category_id = $1;
     `;
@@ -23,7 +23,7 @@ const getCategoryById = async (categoryId) => {
 //
 const getCategoriesByProjectId = async (projectId) => {
     const query = `
-        SELECT c.category_id, c.category_name 
+        SELECT c.category_id, c.title 
         FROM categories c
         JOIN project_categories pc ON c.category_id = pc.category_id
         WHERE pc.project_id = $1;
@@ -68,7 +68,7 @@ const updateCategoryAssignments = async (projectId, categoryIds) => {
 
 const createCategory = async (name) => {
     const query = `
-      INSERT INTO categories (category_name)
+      INSERT INTO categories (title)
       VALUES ($1)
       RETURNING category_id`
 
@@ -89,7 +89,7 @@ const createCategory = async (name) => {
 const updateCategory = async (categoryId, title) => {
     const query = `
     UPDATE categories
-    SET category_name = $1
+    SET title = $1
     WHERE category_id = $2
     RETURNING category_id;
   `;
