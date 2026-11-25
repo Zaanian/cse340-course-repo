@@ -74,9 +74,9 @@ const processNewCategoryform = async (req, res) => {
         return res.redirect('/new-category');
     }
 
-    const { name } = req.body;
+    const { title } = req.body;
 
-    const categoryId = await createCategory(name);
+    const categoryId = await createCategory(title);
     req.flash('success', 'Category added successfully!');
     res.redirect(`/category/${categoryId}`);
 }
