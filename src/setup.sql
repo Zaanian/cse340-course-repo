@@ -87,3 +87,10 @@ INSERT INTO project_categories (project_id, category_id) VALUES
 (3,4),
 (4,4),
 (14,4);
+
+--syncing categories
+SELECT setval(
+  pg_get_serial_sequence('categories', 'category_id'),
+  COALESCE((SELECT MAX(category_id) FROM categories), 1),
+  true
+);
