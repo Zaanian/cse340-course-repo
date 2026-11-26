@@ -18,6 +18,10 @@ import {
     categoryValidation
 } from './controller/categories.js';
 import { testErrorPage } from './controller/error.js';
+import {
+    showUserRegistrationForm, processUserRegistrationForm,
+    showLoginForm, processLoginForm, processLogout
+} from './controller/users.js';
 
 
 const router = express.Router();
@@ -67,5 +71,14 @@ router.post('/new-category', categoryValidation, processNewCategoryform)
 
 // error-handling routes
 router.get('/test-error', testErrorPage);
+
+// User registration routes
+router.get('/register', showUserRegistrationForm);
+router.post('/register', processUserRegistrationForm);
+
+// User login routes
+router.get('/login', showLoginForm);
+router.post('/login', processLoginForm);
+router.get('/logout', processLogout);
 
 export default router;
