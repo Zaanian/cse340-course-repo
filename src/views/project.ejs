@@ -20,11 +20,12 @@
             </a>
 
         </p>
+        
         <div>
             <% categories.forEach(category=> { %>
                 <!-- Link tag to the category details page -->
                 <a href="/category/<%= category.category_id %>" class="category-tag">
-                    <%= category.category_name %>
+                    <%= category.title %>
                 </a>
                 <% }) %>
         </div>
